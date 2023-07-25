@@ -1,6 +1,6 @@
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import Container from "@/Components/Container";
-import DropdownMenu from "@/Components/Dropdownmenu";
+import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import { usePage } from "@inertiajs/react";
 import React from "react";
@@ -15,14 +15,31 @@ export default function Navbar() {
                     <div className="flex items-center gap-x-6">
                         <NavLink href="/">Home</NavLink>
                         <NavLink href="/dashboard">Dashboard</NavLink>
+                        <NavLink href="/products">Produk</NavLink>
                         {auth.user ? (
                             <>
-                                <NavLink href="/profile">
-                                    {auth.user.name}
-                                </NavLink>
-                                <NavLink href="/logout" method="post">
-                                    Logout
-                                </NavLink>
+                                <Dropdown>
+                                    <Dropdown.Trigger>
+                                        <NavLink>{auth.user.name}</NavLink>
+                                    </Dropdown.Trigger>
+                                    <Dropdown.Content>
+                                        <Dropdown.Link href="/profile">
+                                            Profile
+                                        </Dropdown.Link>
+                                        <Dropdown.Link href="/cart">
+                                            Keranjang
+                                        </Dropdown.Link>
+                                        <Dropdown.Link href="/history">
+                                            History
+                                        </Dropdown.Link>
+                                        <Dropdown.Link
+                                            href="/logout"
+                                            method="post"
+                                        >
+                                            Logout
+                                        </Dropdown.Link>
+                                    </Dropdown.Content>
+                                </Dropdown>
                             </>
                         ) : (
                             <>
