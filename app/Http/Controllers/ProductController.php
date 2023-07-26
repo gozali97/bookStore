@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductResource;
+use App\Http\Resources\ProductSingleResource;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -21,10 +22,21 @@ class ProductController extends Controller
                 'harga',
                 'gambar_produk',
                 'kategori_id'
-            )->paginate(12);
+            )
+            ->paginate(12)
+            ->withQueryString();
+
         // return ProductResource::collection($products);
         return inertia('Products/Index', [
             'products' => ProductResource::collection($products),
+        ]);
+    }
+
+    public function show(Product $product)
+    {
+
+        return inertia('Products/Show', [
+            'product' => ProductSingleResource::make($product->load('category')),
         ]);
     }
 }

@@ -4,6 +4,7 @@ import { Head } from "@inertiajs/react";
 import Container from "@/Components/Container";
 import ProductItem from "@/Components/ProductItem";
 import Header from "@/Components/Header";
+import Pagination from "@/Components/Pagination";
 
 export default function Index(props) {
     const { data: products, meta, links } = props.products;
@@ -23,6 +24,7 @@ export default function Index(props) {
                         ))}
                     </div>
                 ) : null}
+                <Pagination meta={meta} links={links} />
             </Container>
         </div>
     );

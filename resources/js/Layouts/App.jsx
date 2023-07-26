@@ -10,7 +10,7 @@ export default function App({ header, children }) {
         <div className="min-h-screen bg-gray-100">
             <Navbar />
 
-            <main className="py-12 ">{children}</main>
+            <main className="py-12 mt-10">{children}</main>
         </div>
     );
 }
