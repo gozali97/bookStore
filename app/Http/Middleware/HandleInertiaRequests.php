@@ -35,8 +35,11 @@ class HandleInertiaRequests extends Middleware
     {
 
         // Cache::flush();
+        $cartBelongsToRequestUser = 0;
+        if ($request->user()) {
+            $cartBelongsToRequestUser = Cart::whereBelongsTo($request->user())->whereNull('paid_at')->count();
+        }
 
-        $carttBelongsToRequestUser = Cart::whereBelongsTo($request->user())->whereNull('paid_at')->count();
 
         return array_merge(parent::share($request), [
             'auth' => [
@@ -51,7 +54,7 @@ class HandleInertiaRequests extends Middleware
                 'nama_kategori' => $q->nama_kategori,
                 'slug' => $q->slug
             ])),
-            'carts_global_count' => $request->user() ? Cache::rememberForever('carts_global_count', fn () => $carttBelongsToRequestUser) : null,
+            'carts_global_count' => $request->user() ? Cache::rememberForever('carts_global_count', fn () => $cartBelongsToRequestUser) : '',
         ]);
     }
 }

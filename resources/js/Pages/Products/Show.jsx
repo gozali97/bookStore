@@ -4,8 +4,19 @@ import { Head, Link } from "@inertiajs/react";
 import { numberFormat } from "@/Libs/Helper";
 import Container from "@/Components/Container";
 import Button from "@/Components/Button";
+import { Inertia } from "@inertiajs/inertia";
+import { toast } from "react-hot-toast";
 
 export default function Show({ product }) {
+    const addToCart = () => {
+        Inertia.post(
+            route("cart.store", product),
+            {},
+            {
+                onSuccess: () => toast.success("Ditambahkan keranjang"),
+            }
+        );
+    };
     return (
         <div>
             <Container>
@@ -35,7 +46,7 @@ export default function Show({ product }) {
                             <sup>Rp.</sup>
                             {numberFormat(product.harga)}
                         </div>
-                        <Button>Add to Cart</Button>
+                        <Button onClick={addToCart}>Add to Cart</Button>
                     </div>
                 </div>
             </Container>
