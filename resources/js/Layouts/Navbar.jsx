@@ -59,7 +59,7 @@ export default function Navbar() {
                                 </Dropdown>
                                 <NavLink
                                     className="flex items-center gap-x-2"
-                                    href="/cart"
+                                    href="/carts"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"

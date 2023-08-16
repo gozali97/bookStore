@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 
 Route::middleware('auth')->group(function () {
+    Route::get('carts', [CartController::class, 'index'])->name('carts.index');
+    Route::delete('carts/delete/{cart}', [CartController::class, 'destroy'])->name('carts.destroy');
     Route::post('carts/add-to-cart/{product:slug}', [CartController::class, 'store'])->name('cart.store');
     Route::resource('products', ProductController::class);
 

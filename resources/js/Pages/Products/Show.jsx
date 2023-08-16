@@ -5,26 +5,41 @@ import { numberFormat } from "@/Libs/Helper";
 import Container from "@/Components/Container";
 import Button from "@/Components/Button";
 import { Inertia } from "@inertiajs/inertia";
-import { toast } from "react-hot-toast";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Show({ product }) {
-    const addToCart = () => {
-        Inertia.post(
-            route("cart.store", product),
-            {},
-            {
-                onSuccess: () => toast.success("Ditambahkan keranjang"),
-            }
-        );
+    const addToCart = async () => {
+        try {
+            await Inertia.post(route("cart.store", product));
+            toast.success("Success add to cart!");
+        } catch (error) {
+            console.error(error);
+            toast.error("Gagal menambahkan ke keranjang!");
+        }
     };
+
     return (
         <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={6000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+
             <Container>
                 <Head title={product.name} />
                 <div className="flex gap-10">
                     <div className="w-1/3">
                         <img
-                            className="w-full rounded-lg"
+                           className="w-full rounded-lg"
                             src={product.gambar_produk}
                             alt=""
                         />
