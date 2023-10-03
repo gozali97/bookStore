@@ -107,7 +107,7 @@ export default function Index({carts}) {
                 <DropdownMenu buttonClassname='bg-blue-600 text-white px-3 py-2 rounded-lg' label='Metode pembayaran'>
                     <Dropdown.Link href='/invoice' method='post' as='button' data={{ carts: carts, total: total, payment_type: 'gopay' }}>Gopay</Dropdown.Link>
                     <Dropdown.Divider/>
-                    <Dropdown.Link href='#'>BCA Virtual Account</Dropdown.Link>
+                    <Dropdown.Link href='/invoice' method='post' as='button' data={{ carts: carts, total: total, payment_type: 'bca' }}>BCA Virtual Account</Dropdown.Link>
                     <Dropdown.Link href='#'>BNI Virtual Account</Dropdown.Link>
                     <Dropdown.Link href='#'>Mandiri Virtual Account</Dropdown.Link>
                 </DropdownMenu>
