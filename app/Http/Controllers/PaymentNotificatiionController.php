@@ -13,7 +13,7 @@ class PaymentNotificatiionController extends Controller
 
         $invoice = Invoice::where('order_id', $request->order_id)->first();
         //SHA512(order_id+status_code+gross_amount+ServerKey)
-        $signature_key = hash('sha512', $request->order_id.$request->status_code.$invoice->groos_amount.'.00'.config('services.midtrans.server_key'));
+        $signature_key = hash('sha512', $request->order_id.$request->status_code.$invoice->gross_amount.'.00'.config('services.midtrans.server_key'));
 
         if($request->signature_key = $signature_key){
             $invoice->update([
