@@ -40,6 +40,10 @@ function DropdownMenu({ label, children, buttonClassname=''}) {
         </Menu>
     );
 }
+function Divider(){
+    return<div className='bg-gradient-to-r from-gray-300 via-white to-white -full block h-px    '/>
+}
 
 DropdownMenu.Link = Link;
+DropdownMenu.Divider = Divider;
 export default DropdownMenu;

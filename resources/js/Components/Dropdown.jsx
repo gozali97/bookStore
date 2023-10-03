@@ -84,7 +84,12 @@ const DropdownLink = ({ className = '', children, ...props }) => {
     );
 };
 
+function Divider(){
+    return<div className='bg-gray-200 my-1 w-full block h-px    '/>
+}
+
 Dropdown.Trigger = Trigger;
+Dropdown.Divider = Divider;
 Dropdown.Content = Content;
 Dropdown.Link = DropdownLink;
 

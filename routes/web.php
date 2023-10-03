@@ -5,10 +5,12 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\InvoiceController;
 
 Route::get('/', HomeController::class)->name('home');
 
 Route::middleware('auth')->group(function () {
+    Route::post('invoice', [InvoiceController::class, 'store'])->name('invoice.store');
     Route::get('carts', [CartController::class, 'index'])->name('carts.index');
     Route::delete('carts/delete/{cart}', [CartController::class, 'destroy'])->name('carts.destroy');
     Route::post('carts/add-to-cart/{product:slug}', [CartController::class, 'store'])->name('cart.store');
