@@ -35,7 +35,7 @@ export default function Show({ product }) {
             />
 
             <Container>
-                <Head title={product.name} />
+                <Head title={product.nama_produk} />
                 <div className="flex gap-10">
                     <div className="w-1/3">
                         <img

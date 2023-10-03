@@ -43,7 +43,7 @@ export default function Navbar() {
                                         <Dropdown.Link href="/profile">
                                             Profile
                                         </Dropdown.Link>
-                                        <Dropdown.Link href="/cart">
+                                        <Dropdown.Link href="/carts">
                                             Keranjang
                                         </Dropdown.Link>
                                         <Dropdown.Link href="/history">
