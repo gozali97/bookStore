@@ -22,4 +22,8 @@ class Product extends Model
     {
         return 'slug';
     }
+
+    public function products(){
+        return $this->belongsToMany(Product::class, 'user_product');
+    }
 }

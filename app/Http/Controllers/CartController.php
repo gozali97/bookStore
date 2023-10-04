@@ -21,6 +21,7 @@ class CartController extends Controller
         $carts = Cart::query()
             ->with('product')
             ->whereBelongsTo($request->user())
+            ->whereNull('paid_at')
             ->get();
 //        return CartResource::collection($carts);
         return inertia('Cart/Index', [
@@ -38,7 +39,7 @@ class CartController extends Controller
         ]);
 
         Cache::forget('carts_global_count');
-        return back();
+        return redirect('/carts');
     }
 
     public function destroy(Cart $cart)

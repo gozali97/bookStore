@@ -13,7 +13,6 @@ class InvoiceController extends Controller
         $total = (int) $request->total;
         $cart_ids = $request->collect('carts')->pluck('id');
 
-//        $order_id = 'order-'.'12415151'.$request->user()->id.$cart_ids->implode('');
         $order_id = 'order-'.now()->format('Y').$request->user()->id.$cart_ids->implode('');
 
         $invoiceExists = Invoice::where('order_id', $order_id)->firstOr(fn () => false);
@@ -76,13 +75,13 @@ class InvoiceController extends Controller
 
                     $response = Http::withBasicAuth(config('services.midtrans.server_key') . ':', '')
              ->post('https://api.sandbox.midtrans.com/v2/charge', $data);
-            dd($response->json());
+//            dd($response->json());
 
 
             $response->json();
         }
 
-        return back();
+        return to_route('invoice.show', $invoice);
     }
 
     public function show(Invoice $invoice){

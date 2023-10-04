@@ -46,6 +46,9 @@ export default function Navbar() {
                                         <Dropdown.Link href="/carts">
                                             Keranjang
                                         </Dropdown.Link>
+                                        <Dropdown.Link href="/products/me">
+                                            Your Products
+                                        </Dropdown.Link>
                                         <Dropdown.Link href="/history">
                                             History
                                         </Dropdown.Link>

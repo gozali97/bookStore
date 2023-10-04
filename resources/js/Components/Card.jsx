@@ -21,7 +21,7 @@ function Body({children}) {
 
 function Table({children}) {
     return(
-        <div className=''>{children}</div>
+        <div className='p-6'>{children}</div>
     )
 };
 

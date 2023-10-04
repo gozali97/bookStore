@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\ProductSingleResource;
+use App\Http\Resources\UserProductResource;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -37,6 +38,19 @@ class ProductController extends Controller
 
         return inertia('Products/Show', [
             'product' => ProductSingleResource::make($product->load('category')),
+        ]);
+    }
+
+    public function mine(Request $request){
+
+        $products = $request->user()->products()
+                ->latest()
+                ->paginate()
+                ->withQueryString();
+
+//        return $products;
+        return inertia('Products/Mine', [
+            'products' => UserProductResource::collection($products),
         ]);
     }
 }

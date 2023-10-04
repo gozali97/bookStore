@@ -10,6 +10,10 @@ use App\Http\Controllers\PaymentNotificatiionController;
 
 Route::get('/', HomeController::class)->name('home');
 
+Route::get('/products/me', [ProductController::class, 'mine'])->middleware('auth')->name('products.mine');
+Route::resource('products', ProductController::class);
+
+
 Route::middleware('auth')->group(function () {
     Route::post('invoice', [InvoiceController::class, 'store'])->name('invoice.store');
     Route::get('invoice/{invoice:order_id}', [InvoiceController::class, 'show'])->name('invoice.show');
@@ -17,7 +21,6 @@ Route::middleware('auth')->group(function () {
     Route::get('carts', [CartController::class, 'index'])->name('carts.index');
     Route::delete('carts/delete/{cart}', [CartController::class, 'destroy'])->name('carts.destroy');
     Route::post('carts/add-to-cart/{product:slug}', [CartController::class, 'store'])->name('cart.store');
-    Route::resource('products', ProductController::class);
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 });
