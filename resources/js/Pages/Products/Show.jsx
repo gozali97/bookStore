@@ -7,8 +7,9 @@ import Button from "@/Components/Button";
 import { Inertia } from "@inertiajs/inertia";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ButtonLink from "@/Components/ButtonLink.jsx";
 
-export default function Show({ product }) {
+export default function Show({ product, auth, isProductBought }) {
     const addToCart = async () => {
         try {
             await Inertia.post(route("cart.store", product));
@@ -61,7 +62,10 @@ export default function Show({ product }) {
                             <sup>Rp.</sup>
                             {numberFormat(product.harga)}
                         </div>
-                        <Button onClick={addToCart}>Add to Cart</Button>
+                        {auth.user ? <>
+                            {isProductBought ? <ButtonLink href='/products/me'>Already Bought</ButtonLink> : <Button onClick={addToCart}>Add to Cart</Button>}
+                        </> : <Button onClick={addToCart}>Add to Cart</Button> }
+
                     </div>
                 </div>
             </Container>

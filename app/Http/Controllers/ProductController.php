@@ -33,11 +33,12 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show(Product $product)
+    public function show(Request $request,Product $product)
     {
-
+        $isProductBought = $request->user() ? $request->user()->products()->find($product->id) : null;
         return inertia('Products/Show', [
             'product' => ProductSingleResource::make($product->load('category')),
+            'isProductBought' => $isProductBought,
         ]);
     }
 

@@ -16,7 +16,7 @@ class ProductResource extends JsonResource
             'nama_produk' => $this->nama_produk,
             'slug' => $this->slug,
             'harga' => $this->harga,
-            'gambar_produk' => $this->gambar_produk ? Storage::url($this->gambar_produk) : 'https://fakeimg.pl/200x200/?text=Image',
+            'gambar_produk' => $this->gambar_produk ? Storage::url($this->gambar_produk) : 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Ym9va3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
             'category' => $this->category
                 ? [
                     'id' => $this->category->id,

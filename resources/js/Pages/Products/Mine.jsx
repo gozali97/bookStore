@@ -29,7 +29,7 @@ export default function Mine(props) {
                                         <tr key={product.id}>
                                             <Table.Td className='w-0'>{meta.from + i}</Table.Td>
                                             <Table.Td>
-                                                <a className='text-blue-600 underline' href={product.url} target="_blank" rel="noopener noreferrer">{product.nama_produk}</a>
+                                                <a className='text-blue-600 underline' href={product.slug} target="_blank" rel="noopener noreferrer">{product.nama_produk}</a>
                                             </Table.Td>
                                         </tr>
                                     ))}

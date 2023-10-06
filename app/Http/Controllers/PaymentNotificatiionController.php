@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\InvoicePaid;
 use App\Models\Cart;
 use App\Models\Invoice;
 use App\Models\User;
@@ -21,29 +22,31 @@ class PaymentNotificatiionController extends Controller
             $signature_key = hash('sha512', $request->order_id . $request->status_code . $invoice->gross_amount . '.00' . config('services.midtrans.server_key'));
 
             if ($request->signature_key == $signature_key) {
-                $invoice->update([
-                    'succeeded_at' => $request->settlement_time,
-//                    'status' => InvoiceStatus::SETTLEMENT->value,
-                    'payment_info' => $request->all(),
-                ]);
+                if($request->transaction_status == 'settlement'){
+                    $invoice->update([
+                        'status' => $request->transaction_status,
+                        'succeeded_at' => $request->settlement_time,
+                    ]);
 
-                $cartIds = json_decode($invoice->cart_ids, true);
+                    $cartIds = json_decode($invoice->cart_ids, true);
 
-                if (!is_array($cartIds)) {
-                } else {
-                    $cartQuery = Cart::query()->whereIn('id', $cartIds);
+                    if (!is_array($cartIds)) {
+                    } else {
+                        $cartQuery = Cart::query()->whereIn('id', $cartIds);
 //                    Cart::whereIn('id', $cartIds)->update([
 //                        'paid_at' => Carbon::now()->toDateTimeString(),
 //                    ]);
-                    $cartQuery->update([
-                        'paid_at' => Carbon::now()->toDateTimeString(),
-                    ]);
+                        $cartQuery->update([
+                            'paid_at' => Carbon::now()->toDateTimeString(),
+                        ]);
 
-                    $product_ids = $cartQuery->pluck('product_id');
-                    $user = User::find($invoice->user_id);
-                    $user->products()->attach($product_ids);
+                        $product_ids = $cartQuery->pluck('product_id');
+                        $user = User::find($invoice->user_id);
+                        $user->products()->attach($product_ids);
+                    }
+                    broadcast(new InvoicePaid($invoice));
+                    Cache::flush();
                 }
-                Cache::flush();
 //               Cache::forget('carts_global_count');
             }
         }catch (\Exception $e) {

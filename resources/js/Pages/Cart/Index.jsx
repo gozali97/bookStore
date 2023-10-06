@@ -27,7 +27,7 @@ export default function Index({carts}) {
     };
     let subtotal = carts.reduce((acc, cart) => acc + cart.price,0);
     let ppn = (11/100) * carts.reduce((acc, cart) => acc + cart.price,0);
-    let total = ppn + subtotal;
+    let total = carts.reduce((acc, cart) => acc + cart.price_tax,0);
 
     return (
         <div>
@@ -90,7 +90,7 @@ export default function Index({carts}) {
                                     <tr className='bg-gray-200 text-gray-900 font-bold'>
                                         <Table.Td></Table.Td>
                                         <Table.Td>Total</Table.Td>
-                                        <Table.Td className="text-right">RP. {numberFormat(carts.reduce((acc, cart) => acc + cart.price,0) + ppn)}</Table.Td>
+                                        <Table.Td className="text-right">RP. {numberFormat(total)}</Table.Td>
                                         <Table.Td></Table.Td>
                                     </tr>
                                 </>: <Table.Empty colSpan={4} message={<>
@@ -108,9 +108,9 @@ export default function Index({carts}) {
                 <DropdownMenu buttonClassname='bg-blue-600 text-white px-3 py-2 rounded-lg' label='Metode pembayaran'>
                     <Dropdown.Link href='/invoice' method='post' as='button' data={{ carts: carts, total: total, payment_type: 'gopay' }}>Gopay</Dropdown.Link>
                     <Dropdown.Divider/>
-                    <Dropdown.Link href='/invoice' method='post' as='button' data={{ carts: carts, total: total, payment_type: 'bca' }}>BCA Virtual Account</Dropdown.Link>
-                    <Dropdown.Link href='#'>BNI Virtual Account</Dropdown.Link>
-                    <Dropdown.Link href='#'>Mandiri Virtual Account</Dropdown.Link>
+                    <Dropdown.Link href='/invoice' method='post' as='button' data={{ carts: carts, total: total, payment_type: 'bank_transfer', bank:'bca' }}>BCA Virtual Account</Dropdown.Link>
+                    <Dropdown.Link href='/invoice' method='post' as='button' data={{ carts: carts, total: total, payment_type: 'bank_transfer', bank:'bni' }}>BNI Virtual Account</Dropdown.Link>
+                    <Dropdown.Link href='/invoice' method='post' as='button' data={{ carts: carts, total: total, payment_type: 'bank_transfer', bank:'mandiri' }}>Mandiri Virtual Account</Dropdown.Link>
                 </DropdownMenu>
             </div>
                     : null}
