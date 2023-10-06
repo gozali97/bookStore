@@ -4,6 +4,7 @@ import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import { usePage } from "@inertiajs/react";
 import React from "react";
+import DropdownMenu from "@/Components/DropdownMenu.jsx";
 
 export default function Navbar() {
     const { auth, categories_global, carts_global_count } = usePage().props;
@@ -14,29 +15,20 @@ export default function Navbar() {
                     <ApplicationLogo />
                     <div className="flex items-center gap-x-6">
                         <NavLink href="/">Home</NavLink>
-                        <NavLink href="/products">Produk</NavLink>
-                        <Dropdown>
-                            <Dropdown.Trigger>
-                                <NavLink>{"Categories"}</NavLink>
-                            </Dropdown.Trigger>
-                            <Dropdown.Content>
+                        <NavLink href="/products">Products</NavLink>
+                        <DropdownMenu buttonClassname='text-white' label='Categories'>
                                 {categories_global.map((category) => (
                                     <Dropdown.Link
                                         key={category.slug}
-                                        href={`/prouducts?category=${category.slug}`}
+                                        href={`/products?category=${category.slug}`}
                                     >
                                         {category.nama_kategori}
                                     </Dropdown.Link>
                                 ))}
-                            </Dropdown.Content>
-                        </Dropdown>
+                        </DropdownMenu>
                         {auth.user ? (
                             <>
-                                <Dropdown>
-                                    <Dropdown.Trigger>
-                                        <NavLink>{auth.user.name}</NavLink>
-                                    </Dropdown.Trigger>
-                                    <Dropdown.Content>
+                                <DropdownMenu buttonClassname='text-white' label={auth.user.name}>
                                         <Dropdown.Link href="/">
                                             Dashboard
                                         </Dropdown.Link>
@@ -58,8 +50,7 @@ export default function Navbar() {
                                         >
                                             Logout
                                         </Dropdown.Link>
-                                    </Dropdown.Content>
-                                </Dropdown>
+                                </DropdownMenu>
                                 <NavLink
                                     className="flex items-center gap-x-2"
                                     href="/carts"

@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PaymentNotificatiionController;
+use App\Http\Controllers\HistoryController;
 
 Route::get('/', HomeController::class)->name('home');
 
@@ -17,6 +18,8 @@ Route::resource('products', ProductController::class);
 Route::middleware('auth')->group(function () {
     Route::post('invoice', [InvoiceController::class, 'store'])->name('invoice.store');
     Route::get('invoice/{invoice:order_id}', [InvoiceController::class, 'show'])->name('invoice.show');
+
+    Route::get('history', HistoryController::class)->name('history');
 
     Route::get('carts', [CartController::class, 'index'])->name('carts.index');
     Route::delete('carts/delete/{cart}', [CartController::class, 'destroy'])->name('carts.destroy');
