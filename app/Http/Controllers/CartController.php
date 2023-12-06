@@ -39,7 +39,7 @@ class CartController extends Controller
         ]);
 
         Cache::forget('carts_global_count');
-        return redirect('/carts');
+        return redirect()->back();
     }
 
     public function destroy(Cart $cart)
