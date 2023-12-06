@@ -1,6 +1,6 @@
 import React from "react";
 import App from "@/Layouts/App";
-import { Head, Link } from "@inertiajs/react";
+import {Head, Link, router} from "@inertiajs/react";
 import { numberFormat } from "@/Libs/Helper";
 import Container from "@/Components/Container";
 import Button from "@/Components/Button";
@@ -12,7 +12,7 @@ import ButtonLink from "@/Components/ButtonLink.jsx";
 export default function Show({ product, auth, isProductBought }) {
     const addToCart = async () => {
         try {
-            await Inertia.post(route("cart.store", product));
+            router.post(route("cart.store", product));
             toast.success("Success add to cart!");
         } catch (error) {
             console.error(error);
@@ -22,19 +22,6 @@ export default function Show({ product, auth, isProductBought }) {
 
     return (
         <div>
-            <ToastContainer
-                position="top-right"
-                autoClose={6000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
-
             <Container>
                 <Head title={product.nama_produk} />
                 <div className="flex gap-10">

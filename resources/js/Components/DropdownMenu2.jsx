@@ -21,7 +21,7 @@ function Link({ href, children, ...props }) {
     );
 }
 
-function DropdownMenu({ label, children, buttonClassname=''}) {
+function DropdownMenu2({ label, children, buttonClassname=''}) {
     return (
         <Menu  className="relative" as="div">
             {({open}) => (
@@ -44,6 +44,6 @@ function Divider(){
     return<div className='bg-gradient-to-r from-gray-300 via-white to-white -full block h-px    '/>
 }
 
-DropdownMenu.Link = Link;
-DropdownMenu.Divider = Divider;
-export default DropdownMenu;
+DropdownMenu2.Link = Link;
+DropdownMenu2.Divider = Divider;
+export default DropdownMenu2;

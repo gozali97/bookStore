@@ -1,6 +1,6 @@
 import React from "react";
 import App from "@/Layouts/App";
-import {Head, Link} from "@inertiajs/react";
+import {Head, Link, router} from "@inertiajs/react";
 import Header from "@/Components/Header.jsx";
 import Container from "@/Components/Container.jsx";
 import Button from "@/Components/Button.jsx";
@@ -18,8 +18,8 @@ import DropdownMenu from "@/Components/DropdownMenu.jsx";
 export default function Index({carts}) {
     const onDeleteHandler = async (cart_id) => {
         try {
-            await Inertia.post(route('carts.destroy', cart_id), { _method: 'delete' });
-            toast.error("Removed!");
+            router.post(route('carts.destroy', cart_id), { _method: 'delete' });
+            toast.error("Product remove from your cart!");
         } catch (error) {
             console.error(error);
             toast.error("An error occurred while deleting the item.");
@@ -31,19 +31,6 @@ export default function Index({carts}) {
 
     return (
         <div>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={true}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
-
             <Head title="Your Cart"/>
             <Header title="Your Carts" description="The Product  was added to cart"/>
             <Container>

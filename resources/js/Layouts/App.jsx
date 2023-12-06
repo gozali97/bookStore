@@ -1,7 +1,8 @@
-import { useState } from "react";
-
-import Navbar from "./Navbar";
+import React, { useState } from "react";
+import Navigation from "./Navigation.jsx";
 import { Toaster } from "react-hot-toast";
+import Toastfy from "@/Components/Toastfy.jsx";
+import Footer from "@/Components/Footer.jsx";
 
 export default function App({ header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -9,9 +10,13 @@ export default function App({ header, children }) {
 
     return (
         <div className="min-h-screen bg-gray-100">
-            <Navbar />
+            <Toastfy/>
+            <Navigation />
             <Toaster position="top-center" reverseOrder={false} />
-            <main className="py-12 mt-10">{children}</main>
+            <main className="py-12">{children}</main>
+            <div className="-mb-14">
+                <Footer/>
+            </div>
         </div>
     );
 }
