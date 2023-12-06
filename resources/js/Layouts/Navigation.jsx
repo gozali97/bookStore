@@ -19,7 +19,9 @@ export default function Navigation() {
         <nav className="bg-gray-800 py-2 border-b shadow-md fixed top-0 left-0 w-full z-50">
                 <div className="flex w-full justify-between px-4">
                     <div className="w-1/4 justify-start">
+                        <Link href={route('home')}>
                         <ApplicationLogo />
+                        </Link>
                     </div>
                     <div className="hidden lg:flex lg:w-full justify-center gap-x-6 w-2/4">
                         <NavLink href="/">Home</NavLink>
