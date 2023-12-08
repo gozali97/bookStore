@@ -36,8 +36,8 @@ export default function Navigation() {
                                 </Dropdown.Link>
                             ))}
                         </DropdownMenu>
-                        <NavLink href="#">About</NavLink>
-                        <NavLink href="#">Contact</NavLink>
+                        <NavLink href="/about">About</NavLink>
+                        <NavLink href="/contact">Contact</NavLink>
                     </div>
                     <div className="flex w-1/4 gap-2 justify-end">
                         {auth.user ? (

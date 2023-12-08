@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -11,6 +13,9 @@ use App\Http\Controllers\PaymentNotificatiionController;
 use App\Http\Controllers\HistoryController;
 
 Route::get('/', HomeController::class)->name('home');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
 
 Route::get('/products/me', [ProductController::class, 'mine'])->middleware('auth')->name('products.mine');
 Route::resource('products', ProductController::class);

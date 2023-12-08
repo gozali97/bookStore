@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
         Cache::forget('carts_global_count');
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->route('history');
     }
 
     /**

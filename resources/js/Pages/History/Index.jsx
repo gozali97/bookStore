@@ -11,7 +11,7 @@ export default function Index(props) {
     const { data: carts, meta, links } = props.carts;
 
     return (
-        <div>
+        <div className="pt-10">
             <Head title="History" />
            <Container>
                <Card>

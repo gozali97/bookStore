@@ -55,7 +55,7 @@ export default function Show({ product, auth, isProductBought }) {
                                 </div>
                                 {auth.user ? <>
                                     {isProductBought ? <ButtonLink href='/products/me'>Already Bought</ButtonLink> : <Button onClick={addToCart}>Add to Cart</Button>}
-                                </> : <Button onClick={addToCart}>Add to Cart</Button> }
+                                </> : <Link className="bg-black text-white px-3 py-1 shadow hover:bg-gray-800 w-fit rounded-lg" href={route('login')}>Add to Cart</Link> }
 
                             </div>
                         </div>
