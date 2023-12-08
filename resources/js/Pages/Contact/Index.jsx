@@ -1,11 +1,13 @@
 import App from "@/Layouts/App";
 import React from "react";
 import {Head, Link} from "@inertiajs/react";
+import Header from "@/Components/Header.jsx";
 
 export default function Index() {
     return (
         <div className="p-10">
             <Head title="Contact"/>
+            <Header title="Contact" desc="Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know."/>
             <section className="bg-white" id="contact">
                 <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
                     <div className="mb-4">

@@ -18,7 +18,7 @@ export default function Show({ auth, invoice }) {
                 }
             })
     return (
-        <div>
+        <div className="pt-10">
             <Head title={`Your order - ${invoice.order_id}`} />
             <Container>
                 <div className="grid grid-cols-2 gap-10">

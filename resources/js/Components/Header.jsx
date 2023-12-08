@@ -3,7 +3,7 @@ import Container from "./Container";
 
 export default function Header({ title, desc }) {
     return (
-        <div className="flex items-center w-full bg-gray-200 border-b border-gray-300 mt-2">
+        <div className="flex items-center w-full bg-gray-200 border-b border-gray-300 mt-2 mb-6">
             <div className="sm:w-1/2">
                 <div className="flex w-full justify-center">
                     <div className="w-96 p-6">
@@ -14,7 +14,7 @@ export default function Header({ title, desc }) {
             </div>
             <div className="sm:w-1/2 p-5">
                 <div className="text">
-                    <span className="text-gray-500 border-b-2 border-indigo-600 uppercase">About us</span>
+                    <span className="text-gray-500 border-b-2 border-indigo-600 uppercase">Book Store</span>
                     <h2 className="my-4 font-bold text-3xl  sm:text-4xl ">{title}
                 </h2>
                 <p className="text-gray-700">

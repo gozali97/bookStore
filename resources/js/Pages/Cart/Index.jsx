@@ -32,7 +32,7 @@ export default function Index({carts}) {
     return (
         <div>
             <Head title="Your Cart"/>
-            <Header title="Your Carts" description="The Product  was added to cart"/>
+            <Header title="Your Carts" desc="The Product  was added to cart"/>
             <Container>
                 <Card>
                     <Card.Header>Your Cart</Card.Header>

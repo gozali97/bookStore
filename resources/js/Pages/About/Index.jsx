@@ -1,11 +1,13 @@
 import App from "@/Layouts/App";
 import React from "react";
 import {Head, Link} from "@inertiajs/react";
+import Header from "@/Components/Header.jsx";
 
 export default function Index() {
     return (
         <div className="p-10">
         <Head title="About"/>
+            <Header title="About" desc="Our rigorous security and compliance standards are at the heart of all we do. We work tirelessly to protect you and your customers."/>
             <div className="bg-white  flex items-center n justify-center overflow-hidden z-50 ">
 
                 <div className="relative mx-auto h-full px-4  pb-20   md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8">

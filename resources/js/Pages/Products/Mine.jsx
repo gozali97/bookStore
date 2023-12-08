@@ -10,7 +10,7 @@ export default function Mine(props) {
     const {data: products, meta, links} = props.products;
 
     return (
-        <div>
+        <div className="pt-10">
             <Head title="My Product" />
             <Container>
                 <Card>
@@ -29,7 +29,7 @@ export default function Mine(props) {
                                         <tr key={product.id}>
                                             <Table.Td className='w-0'>{meta.from + i}</Table.Td>
                                             <Table.Td>
-                                                <a className='text-blue-600 underline' href={product.slug} target="_blank" rel="noopener noreferrer">{product.nama_produk}</a>
+                                                <Link className='text-blue-600 underline' href={product.slug} target="_blank" rel="noopener noreferrer">{product.nama_produk}</Link>
                                             </Table.Td>
                                         </tr>
                                     ))}
