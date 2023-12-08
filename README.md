@@ -20,7 +20,7 @@ Clone Projek
 Masuk ke folder dengan peri ntah
 
 ```bash
-  cd nama_projek
+  cd project_name
 ```
 
 -   Copy .env.example menjadi .env kemudia edit database dan api key nya
