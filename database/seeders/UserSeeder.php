@@ -15,14 +15,14 @@ class UserSeeder extends Seeder
     {
         collect([
             [
-                'name' => 'ahmad',
-                'email' => 'ahmad@gmail.com',
+                'name' => 'Tony',
+                'email' => 'user@gmail.com',
                 'email_verified_at' => now(),
                 'password' => bcrypt('password'),
             ],
             [
-                'name' => 'adi',
-                'email' => 'adi@gmail.com',
+                'name' => 'Demo',
+                'email' => 'demo@gmail.com',
                 'email_verified_at' => now(),
                 'password' => bcrypt('password'),
             ],
